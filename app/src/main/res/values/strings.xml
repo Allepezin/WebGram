@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">WebGram</string>
+    <string name="network">No internet connection</string>
+    <string name="skip"><u>Skip</u></string>
+    <string name="accept_privacy">And accept the default privacy settings</string>
+    <string name="start">Start</string>
+    <string name="finish">Finish</string>
+    <string name="next">Next</string>
+    <string name="encryption">Encryption</string>
+    <string name="confidentiality">Confidentiality</string>
+    <string name="convenience">Convenience</string>
+    <string name="webgram">WebGram</string>
+    <string name="safety_browser">Safety browser everyone</string>
+    <string name="welcome">Welcome</string>
+    <string name="enter_website_url">&#160;&#160;&#160;&#160;&#160;Enter website url</string>
+    <string name="enter_something">Enter something</string>
+    <string name="history_deleted">History deleted</string>
+    <string name="cnt_opn_choose">Cannot Open File Chooser</string>
+    <string name="no_app_found">No App found</string>
+    <string name="share_title">Share with your friends</string>
+    <string name="download">Download</string>
+    <string name="yes">Yes</string>
+    <string name="want_to_save">\"Do you want to save \"</string>
+    <string name="cancel">Cancel</string>
+    <string name="error">Error</string>
+    <string name="find_everything">Find everything</string>
+    <string name="history">History</string>
+    <string name="clear_history">Clear history…</string>
+    <string name="your_ip">Your IP</string>
+    <string name="all_ads_are_blocked">All ads are blocked</string>
+</resources>

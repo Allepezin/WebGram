@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_graph"
+    app:startDestination="@id/mainFragment">
+
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.browser.webgram.ui.main.MainFragment"
+        android:label="fragment_main"
+        tools:layout="@layout/fragment_main" >
+        <action
+            android:id="@+id/action_mainFragment_to_historyFragment"
+            app:destination="@id/historyFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:launchSingleTop="false"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
+        <action
+            android:id="@+id/action_mainFragment_to_browserFragment"
+            app:destination="@id/browserFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:launchSingleTop="false"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out">
+            <argument
+                android:name="adblock"
+                android:defaultValue="1"/>
+            <argument
+                android:name="amount"
+                android:defaultValue="https://www.google.com/" />
+        </action>
+    </fragment>
+    <fragment
+        android:id="@+id/historyFragment"
+        android:name="com.browser.webgram.ui.history.HistoryFragment"
+        android:label="fragment_history"
+        tools:layout="@layout/fragment_history" >
+        <action
+            android:id="@+id/action_historyFragment_to_mainFragment"
+            app:destination="@id/mainFragment"
+            app:launchSingleTop="true"
+            app:popUpTo="@id/navigation_graph"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_historyFragment_to_browserFragment"
+            app:destination="@id/browserFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
+    </fragment>
+    <fragment
+        android:id="@+id/browserFragment"
+        android:name="com.browser.webgram.ui.browser.BrowserFragment"
+        android:label="fragment_browser"
+        tools:layout="@layout/fragment_browser" >
+        <action
+            android:id="@+id/action_browserFragment_to_mainFragment"
+            app:destination="@id/mainFragment"
+            app:launchSingleTop="true"
+            app:popUpTo="@id/navigation_graph"
+            app:popUpToInclusive="true" />
+    </fragment>
+
+</navigation>

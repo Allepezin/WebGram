@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.main.MainFragment">
+
+    <LinearLayout
+        android:id="@+id/linear_search_bar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/linear_height"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/linear_buttons_bar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_to_transition"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/card_margin"
+            android:elevation="@dimen/card_elevation"
+            android:transitionName="transit"
+            app:cardCornerRadius="@dimen/card_radius"
+            app:cardElevation="@dimen/card_elevation">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/editText_to_search_browser"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center|start"
+                    android:background="@android:color/transparent"
+                    android:ems="10"
+                    android:hint="@string/enter_website_url"
+                    android:inputType="textPersonName"
+                    android:minHeight="@dimen/edittext_min_height"
+                    tools:ignore="TouchTargetSizeCheck" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linear_buttons_bar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/linear_bar_height"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+
+        <ImageView
+            android:id="@+id/image_to_back_webView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/ic_left" />
+
+        <ImageView
+            android:id="@+id/image_to_forward_webView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/ic_right" />
+
+        <ImageView
+            android:id="@+id/image_to_history"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|center_horizontal"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/ic_history" />
+
+        <ImageView
+            android:id="@+id/image_to_main"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/ic_baseline_main_home" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/image_to_card_adblock"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="@dimen/main_image_margin_bottom"
+        android:src="@drawable/ic_rectangle"
+        app:layout_constraintBottom_toTopOf="@+id/linear_search_bar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/image_hand"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/image_to_card_adblock"
+        android:layout_alignTop="@+id/image_to_card_adblock"
+        android:layout_alignBottom="@+id/image_to_card_adblock"
+        android:layout_marginStart="@dimen/main_image_margin_start"
+        android:src="@drawable/ic_stop"
+        app:layout_constraintBottom_toBottomOf="@+id/image_to_card_adblock"
+        app:layout_constraintStart_toStartOf="@+id/image_to_card_adblock"
+        app:layout_constraintTop_toTopOf="@+id/image_to_card_adblock" />
+
+    <TextView
+        android:id="@+id/text_some"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/text_adblock"
+        android:layout_marginStart="@dimen/main_text_margin_start"
+        android:layout_toStartOf="@+id/switch_to_adblock"
+        android:layout_toEndOf="@+id/image_hand"
+        android:text="@string/all_ads_are_blocked"
+        android:textColor="#47AF86"
+        app:layout_constraintBottom_toBottomOf="@+id/image_hand"
+        app:layout_constraintEnd_toStartOf="@+id/switch_to_adblock"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/image_hand"
+        app:layout_constraintTop_toBottomOf="@+id/text_adblock" />
+
+    <TextView
+        android:id="@+id/text_adblock"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/image_to_card_adblock"
+        android:layout_marginStart="@dimen/main_text_margin_start"
+        android:layout_toStartOf="@+id/switch_to_adblock"
+        android:layout_toEndOf="@+id/image_hand"
+        android:text="AdBlock"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/switch_to_adblock"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/image_hand"
+        app:layout_constraintTop_toTopOf="@+id/image_hand" />
+
+    <Switch
+        android:id="@+id/switch_to_adblock"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/image_to_card_adblock"
+        android:layout_alignEnd="@+id/image_to_card_adblock"
+        android:layout_alignBottom="@+id/image_to_card_adblock"
+        android:layout_marginEnd="@dimen/main_switch_margin_end"
+        android:minWidth="@dimen/min_width"
+        android:minHeight="@dimen/min_height"
+        app:layout_constraintBottom_toBottomOf="@+id/image_to_card_adblock"
+        app:layout_constraintEnd_toEndOf="@+id/image_to_card_adblock"
+        app:layout_constraintTop_toTopOf="@+id/image_to_card_adblock" />
+
+    <ImageView
+        android:id="@+id/image_to_card_ip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/main_image_margin_bottom"
+        android:src="@drawable/ic_rectangle"
+        app:layout_constraintBottom_toTopOf="@+id/image_to_card_adblock"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/image_lock"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/main_image_margin_start"
+        android:src="@drawable/ic_vpn"
+        app:layout_constraintBottom_toBottomOf="@+id/image_to_card_ip"
+        app:layout_constraintStart_toStartOf="@+id/image_to_card_ip"
+        app:layout_constraintTop_toTopOf="@+id/image_to_card_ip" />
+
+    <TextView
+        android:id="@+id/text_yourip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/main_text_margin_start"
+        android:text="@string/your_ip"
+        app:layout_constraintStart_toEndOf="@+id/image_lock"
+        app:layout_constraintTop_toTopOf="@+id/image_lock" />
+
+    <TextView
+        android:id="@+id/text_ip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/main_text_margin_start"
+        android:textColor="#47AF86"
+        app:layout_constraintBottom_toBottomOf="@+id/image_lock"
+        app:layout_constraintStart_toEndOf="@+id/image_lock"
+        app:layout_constraintTop_toBottomOf="@+id/text_yourip"
+        tools:text="Some text"/>
+
+    <LinearLayout
+        android:id="@+id/linear_to_search"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/linear_to_search_margin"
+        android:layout_marginEnd="@dimen/linear_to_search_margin"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/image_to_card_ip"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/image_to_find"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@android:drawable/ic_menu_search" />
+
+        <TextView
+            android:id="@+id/text_to_search"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/find_everything"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
