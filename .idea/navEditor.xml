@@ -19,11 +19,6 @@
                         </option>
                         <option name="myPositions">
                           <map>
-                            <entry key="action_browserFragment_to_historyFragment">
-                              <value>
-                                <LayoutPositions />
-                              </value>
-                            </entry>
                             <entry key="action_browserFragment_to_mainFragment">
                               <value>
                                 <LayoutPositions />
@@ -39,8 +34,8 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="297" />
-                            <option name="y" value="-55" />
+                            <option name="x" value="306" />
+                            <option name="y" value="17" />
                           </Point>
                         </option>
                         <option name="myPositions">

@@ -18,6 +18,7 @@ class AppPreferenceImpl @Inject constructor(context: Context) : AppPreference {
         set(value) {
             saveString(name_visited, value)
         }
+
     override var checked: Int
         get() = getInt(name_checked)
         set(value) {
