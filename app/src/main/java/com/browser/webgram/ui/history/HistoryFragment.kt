@@ -40,14 +40,21 @@ class HistoryFragment : Fragment() {
 
     private fun init() {
         viewModel = ViewModelProvider(this)[HistoryFragmentViewModel::class.java]
-        historyAdapter = HistoryAdapter()
+        historyAdapter = HistoryAdapter {
+            val bundle = Bundle()
+            bundle.putString(key_url, it.text)
+            Timber.tag("key_url").d(it.text)
+            APP_ACTIVITY.navController.navigate(
+                R.id.action_historyFragment_to_browserFragment,
+                bundle
+            )
+        }
 
         binding.recyclerView.adapter = historyAdapter
         binding.recyclerView.layoutManager = LinearLayoutManager(context)
         observerList = Observer {
-            //val list = it.asReversed()
             val list = it
-            historyAdapter.setList(list)
+            historyAdapter.submitList(list)
         }
         viewModel.allNotes.observe(viewLifecycleOwner, observerList)
 
@@ -71,15 +78,5 @@ class HistoryFragment : Fragment() {
 
     companion object {
         private const val key_url = "amount"
-
-        fun click(appNote: AppNote) {
-            val bundle = Bundle()
-            bundle.putString(key_url, appNote.text)
-            Timber.tag("key_url").d(appNote.text)
-            APP_ACTIVITY.navController.navigate(
-                R.id.action_historyFragment_to_browserFragment,
-                bundle
-            )
-        }
     }
 }

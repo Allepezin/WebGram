@@ -1,31 +1,20 @@
 package com.browser.webgram.ui.history
 
-import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.browser.webgram.R
 import com.browser.webgram.database.models.AppNote
 
-class HistoryAdapter : RecyclerView.Adapter<HistoryAdapter.HistoryHolder>() {
-    private var listNotes = emptyList<AppNote>()
+class HistoryAdapter(inline val onClick: (AppNote) -> Unit) :
+    ListAdapter<AppNote, HistoryAdapter.HistoryHolder>(HistoryDiffUtilCallback()) {
 
     class HistoryHolder(view: View) : RecyclerView.ViewHolder(view) {
         val nameNote: TextView = view.findViewById(R.id.item_note_name)
         val textNote: TextView = view.findViewById(R.id.item_note_text)
-    }
-
-    override fun onViewAttachedToWindow(holder: HistoryHolder) {
-        holder.itemView.setOnClickListener {
-            HistoryFragment.click(listNotes[holder.adapterPosition])
-        }
-    }
-
-    override fun onViewDetachedFromWindow(holder: HistoryHolder) {
-        holder.itemView.setOnClickListener(null)
-        super.onViewDetachedFromWindow(holder)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HistoryHolder {
@@ -34,15 +23,13 @@ class HistoryAdapter : RecyclerView.Adapter<HistoryAdapter.HistoryHolder>() {
     }
 
     override fun onBindViewHolder(holder: HistoryHolder, position: Int) {
-        holder.nameNote.text = listNotes[position].name
-        holder.textNote.text = listNotes[position].text
+        holder.nameNote.text = currentList[position].name
+        holder.textNote.text = currentList[position].text
+
+        holder.itemView.setOnClickListener {
+            onClick(currentList[holder.adapterPosition])
+        }
     }
 
-    override fun getItemCount(): Int = listNotes.size
-
-    @SuppressLint("NotifyDataSetChanged")
-    fun setList(list: List<AppNote>) {
-        listNotes = list
-        notifyDataSetChanged()
-    }
+    override fun getItemCount(): Int = currentList.size
 }
